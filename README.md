@@ -47,20 +47,20 @@ Steps taken to rebuild this repo from scratch:
 
 0. Add a development node in `chef/nodes/development.json`
 
-        ```json
-        {
-          "nginx": {
-            "version": "1.4.7",
-            "default_site_enabled": true,
-            "source": {
-              "modules": ["nginx::http_gzip_static_module", "nginx::http_ssl_module"]
-            }
-          },
-          "run_list": [
-            "recipe[nginx::source]"
-          ]
-        }
-        ```
+  ```json
+  {
+    "nginx": {
+      "version": "1.4.7",
+      "default_site_enabled": true,
+      "source": {
+        "modules": ["nginx::http_gzip_static_module", "nginx::http_ssl_module"]
+      }
+    },
+    "run_list": [
+      "recipe[nginx::source]"
+    ]
+  }
+  ```
 
 0. Configure omnibus in `Vagrantfile`
 

@@ -7,11 +7,14 @@ Steps
 -----
 
 0. Create a Gemfile
-```
-$ bundle init
-```
+
+        $ bundle init
+
 0. Update Gemfile
-```
-gem 'knife-solo'
-gem 'librarian-chef'
-```
+
+        gem 'knife-solo'
+        gem 'librarian-chef'
+
+0. Run bundler
+
+        $ bundle

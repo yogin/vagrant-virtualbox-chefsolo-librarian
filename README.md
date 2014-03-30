@@ -18,3 +18,9 @@ Steps
 0. Run bundler
 
         $ bundle
+
+0. Run knife solo to create chef structure
+
+        $ knife solo init chef
+
+

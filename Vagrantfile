@@ -115,4 +115,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
+
+  # Omnibus, forcing a common chef version
+  config.omnibus.chef_version = "11.10.4"
+
+  # Provision the box using chef_solo
+  CHEF_DIR = Pathname(__FILE__).dirname.join('chef')
+  DEVELOPMENT_NODE = JSON.parse(CHEF_DIR.join('nodes', 'development.json').read)
+
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = ["chef/site-cookbooks", "chef/cookbooks"]
+    chef.roles_path = "chef/roles"
+    chef.data_bags_path = "chef/data_bags"
+    chef.provisioning_path = "/tmp/vagrant-chef"
+
+    chef.run_list = DEVELOPMENT_NODE.delete('run_list')
+    chef.json = DEVELOPMENT_NODE
+  end
+
 end

@@ -1,10 +1,12 @@
-vagrant-chefsolo-librarian
-==========================
+Playground for Vagrant, VirtualBox, Chef Solo, Librarian Chef
+=============================================================
 
-Playing around with Vagrant, chef-solo and librarian-chef
+Getting Started
+---------------
 
-Steps
------
+0. Install Vagrant from http://www.vagrantup.com/downloads.html
+
+0. Install VirtualBox from https://www.virtualbox.org/wiki/Downloads
 
 0. Create a Gemfile
 
@@ -23,4 +25,8 @@ Steps
 
         $ knife solo init chef
 
+0. Prepare Vagrant
+
+        $ vagrant box add hashicorp/precise64
+        $ vagrant init hashicorp/precise64
 

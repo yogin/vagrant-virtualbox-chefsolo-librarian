@@ -68,18 +68,20 @@ Steps taken to rebuild this repo from scratch:
 
 0. Configure provision with `chef_solo` in `Vagrantfile`
 
-        chef_dir = pathname(__file__).dirname.join('chef')
-        development_node = json.parse(chef_dir.join('nodes', 'development.json').read)
+  ```ruby
+  CHEF_DIR = Pathname(__file__).dirname.join('chef')
+  DEVELOPMENT_NODE = JSON.parse(CHEF_DIR.join('nodes', 'development.json').read)
 
-        config.vm.provision :chef_solo do |chef|
-          chef.cookbooks_path = ["chef/site-cookbooks", "chef/cookbooks"]
-          chef.roles_path = "chef/roles"
-          chef.data_bags_path = "chef/data_bags"
-          chef.provisioning_path = "/tmp/vagrant-chef"
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = ["chef/site-cookbooks", "chef/cookbooks"]
+    chef.roles_path = "chef/roles"
+    chef.data_bags_path = "chef/data_bags"
+    chef.provisioning_path = "/tmp/vagrant-chef"
 
-          chef.run_list = development_node.delete('run_list')
-          chef.json = development_node
-        end
+    chef.run_list = DEVELOPMENT_NODE.delete('run_list')
+    chef.json = DEVELOPMENT_NODE
+  end
+  ```
 
 0. Finally start vagrant
 
